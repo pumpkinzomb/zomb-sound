@@ -1,10 +1,10 @@
 # zomb-sound
 
 ```
-* db : mysql /
-* Frontend : vue.js /
-* Backend : express node /
-* Deploy : aws ec2
+db : mysql
+Frontend : vue.js
+Backend : express node
+Deploy : aws ec2
 ```
 
 ## Description
