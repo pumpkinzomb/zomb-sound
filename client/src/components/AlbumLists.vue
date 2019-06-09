@@ -10,13 +10,13 @@
     </div>
     <div v-if="albums.length > 0" class="AlbumLists">
       <div v-for="(album,index) in albums" :key="album.a_id" class="Album">
-        <div class="Album-image">
-          <img
-            v-bind:src="require(`../assets/images/${album.album_pic}`)"
-            v-bind:alt="album.album_name"
-          >
-        </div>
         <router-link :to="`/album/${album.a_id}`">
+          <div class="Album-image">
+            <img
+              v-bind:src="require(`../assets/images/${album.album_pic}`)"
+              v-bind:alt="album.album_name"
+            >
+          </div>
           <div class="Album-info">
             <div class="Album-name">
               <div class="Album-number">{{index+1}}</div>
@@ -64,6 +64,11 @@ export default {
 </script>
 
 <style>
+select,
+textarea,
+input {
+  font-size: 16px;
+}
 #AlbumLists {
   width: 100%;
   max-width: 640px;
