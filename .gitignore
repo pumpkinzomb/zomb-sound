@@ -13,7 +13,7 @@ client/.git
 
 # server용 깃
 server/.git
-server/db
+server/db/dbconfig.js
 
 # Editor directories and files
 .idea
