@@ -15,6 +15,11 @@
           </li>
         </ul>
         <div class="media-player__controls">
+          <div class="skip-previous-button">
+            <a href="#" @click.prevent="loadPrevTrack">
+              <i class="material-icons">skip_previous</i>
+            </a>
+          </div>
           <div class="media-player__play-pause-button">
             <a href="#" @click.prevent="toggleStatus">
               <i class="material-icons">
@@ -22,6 +27,11 @@
                 isPlaying ? 'pause_circle_filled' : 'play_circle_filled_white'
                 }}
               </i>
+            </a>
+          </div>
+          <div class="skip-next-button">
+            <a href="#" @click.prevent="loadNextTrack">
+              <i class="material-icons">skip_next</i>
             </a>
           </div>
           <div class="media-player__playback-container">
@@ -99,6 +109,13 @@ export default {
             ? `0${parseInt(this.audioElement.duration % 60)}`
             : parseInt(this.audioElement.duration % 60)
         }`;
+    },
+    loadPrevTrack: function(autoplay = true) {
+      this.activeTrack--;
+      if (this.activeTrack < 0) {
+        this.activeTrack = this.tracks.length - 1;
+      }
+      this.loadTrack(this.activeTrack, autoplay);
     },
     loadNextTrack: function(autoplay = true) {
       this.activeTrack++;
@@ -182,6 +199,9 @@ export default {
   border-radius: 6px;
   padding: 16px; */
 }
+#media-player ul li {
+  display: none;
+}
 #media-player ul li a {
   display: block;
   color: #000000;
@@ -193,6 +213,7 @@ export default {
 #media-player ul li.is-active {
   font-weight: bold;
   background-color: #ffffff;
+  display: block;
 }
 .media-player__controls {
   padding: 0.5rem;
@@ -204,8 +225,26 @@ export default {
   position: relative;
   box-sizing: border-box;
 }
+@media (max-width: 640px) {
+  .media-player__controls {
+    padding: 0;
+  }
+}
+
+.media-player__controls a {
+  color: #eeeeee;
+}
+.media-player__controls a:hover {
+  color: rgba(0, 0, 0, 0.75);
+}
+.skip-previous-button {
+  margin-right: 0.2rem;
+}
+.skip-next-button {
+  margin-left: 0.2rem;
+  margin-right: 0.8rem;
+}
 .media-player__play-pause-button {
-  width: 50px;
   box-sizing: border-box;
 }
 .media-player__play-pause-button a {

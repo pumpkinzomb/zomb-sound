@@ -31,7 +31,7 @@ export default {
           return setTimeout(() => this.$refs.musicPlayer.toggleStatus(), 1);
         }
       }
-      this.tracks = [song];
+      this.tracks.push(song);
       setTimeout(
         () => this.$refs.musicPlayer.loadTrack(this.tracks.length - 1, true),
         1
